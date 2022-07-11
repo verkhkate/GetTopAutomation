@@ -1,15 +1,13 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
-from support.logger import logger
 
 
 class Page:
-
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 10)
-        self.base_url = 'https://www.amazon.com'
+        self.base_url = 'https://gettop.us/'
 
     def click(self, *locator):
         self.driver.find_element(*locator).click()
@@ -26,7 +24,7 @@ class Page:
         e.send_keys(text)
 
     def open_page(self, end_url=''):
-        logger.info(f'Opening {self.base_url}{end_url}')
+       # logger.info(f'Opening {self.base_url}{end_url}')
         self.driver.get(f'{self.base_url}{end_url}')
 
     def wait_for_element_click(self, *locator):
@@ -38,6 +36,12 @@ class Page:
 
     def wait_for_element_appear(self, *locator):
         return self.wait.until(EC.presence_of_element_located(locator))
+
+    def get_title_and_verify(self, expected_text):
+        title = self.driver.title
+        print(title)
+        actual_text = title
+        assert expected_text == actual_text, f'Expected {expected_text}, but got {actual_text}'
 
     def verify_text(self, expected_text, *locator):
         actual_text = self.driver.find_element(*locator).text
