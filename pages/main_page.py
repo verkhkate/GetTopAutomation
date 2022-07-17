@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 
 class MainPage(Page):
 
-    IPHONE_CATEGORY = By.XPATH('//*[@id="wrapper"]//nav/text()')
+    IPHONE_CATEGORY = (By.XPATH, '//*[@id="wrapper"]//nav')
 
     def open_main_page(self):
         self.open_page()
@@ -16,4 +16,4 @@ class MainPage(Page):
         self.open_page(end_url='/product-category/iphone/')
 
     def verify_opened_iphone_category(self):
-        self.verify_text('Iphone', *self.IPHONE_CATEGORY)
+        self.verify_text('HOME / IPHONE', *self.IPHONE_CATEGORY)
