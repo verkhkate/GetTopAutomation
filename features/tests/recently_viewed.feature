@@ -7,8 +7,8 @@ Feature: TESTS FOR "RECENTLY VIEWED"
     When Click on "IPHONE" category in the Header menu
     Then Verify that "IPHONE" category page is opened
     Then Choose product and capture product title
-#    When Click on product
-#    Then Verify that correct product page is opened
+    When Click on product
+    Then Verify that correct product page is opened
 #    When Click on "WATCH" category in the Header menu
 #    Then Verify that "WATCH" category page is opened
 #    Then Verify that "RECENTLY VIEWED" section is visible on the page

@@ -5,7 +5,6 @@ import random
 import time
 
 
-
 class Page:
     def __init__(self, driver):
         self.driver = driver
@@ -22,13 +21,14 @@ class Page:
     def find_elements(self, *locator):
         return self.driver.find_elements(*locator)
 
-    def capture_random_text(self, *locator):
-        elements_list = self.driver.find_elements(*locator)
-        random_element = random.choice(elements_list)
-        # Converting Webelement to a simple text
-        # random_element_text = randon_element.text
-        # print(random_element.text)
-        return random_element
+    def capture_random_element(self, locator_title, locator_pic):
+        elements_list = self.driver.find_elements(*locator_title)
+        elements_pics_list = self.driver.find_elements(*locator_pic)
+        random_number = random.randint(0,len(elements_list)-1)
+        random_element = elements_list[random_number]
+        random_pic = elements_pics_list[random_number]
+        print(random_element.text)
+        return random_element.text, random_pic
 
     def input_text(self, text, *locator):
         e = self.driver.find_element(*locator)
